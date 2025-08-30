@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>嘉義計程車服務 Taxi Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #ffcc00;
+      padding: 15px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .lang-switch button {
+      margin-left: 8px;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      background: white;
+      border-radius: 5px;
+    }
+    .banner {
+      text-align: center;
+      padding: 30px 15px;
+      background: #fff3b0;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 20px;
+    }
+    .service {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 15px;
+    }
+    .contact {
+      text-align: center;
+      padding: 25px;
+    }
+    .contact a {
+      display: inline-block;
+      margin: 8px;
+      padding: 10px 16px;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .contact a.line { background: #00c300; }
+    .contact a.whatsapp { background: #25d366; }
+    .contact a.zalo { background: #0068ff; }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    /* 手機版調整 */
+    @media (max-width: 600px) {
+      .services {
+        grid-template-columns: 1fr;
+      }
+      header { flex-direction: column; align-items: flex-start; }
+      .lang-switch { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">嘉義計程車服務</h1>
+    <div class="lang-switch">
+      <button onclick="setLang('zh')">🇹🇼 中文</button>
+      <button onclick="setLang('en')">🇬🇧 English</button>
+      <button onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+    </div>
+  </header>
+
+  <section class="banner">
+    <h2 id="slogan">您的專屬嘉義計程車服務</h2>
+  </section>
+
+  <section class="services">
+    <div class="service">
+      <h3 id="service1">🚖 叫車服務</h3>
+      <p id="desc1">市區接送，方便又快速。</p>
+    </div>
+    <div class="service">
+      <h3 id="service2">🕒 包車一日遊</h3>
+      <p id="desc2">阿里山、梅山、嘉義周邊景點。</p>
+    </div>
+    <div class="service">
+      <h3 id="service3">✈️ 機場接送</h3>
+      <p id="desc3">桃園 / 高雄機場，需提前預約。</p>
+    </div>
+    <div class="service">
+      <h3 id="service4">🌐 多語服務</h3>
+      <p id="desc4">提供中文 / 英文 / 越南文。</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2 id="contact">📱 聯絡我們</h2>
+    <a href="https://line.me/ti/p/~iepng204472" class="line">加 LINE</a>
+    <a href="https://wa.me/886908232851" class="whatsapp">WhatsApp</a>
+    <a href="tel:+886908232851" class="zalo">Zalo</a>
+  </section>
+
+  <footer>
+    <p>Zhan Taxi Service © 2025</p>
+  </footer>
+
+  <script>
+    const langText = {
+      zh: {
+        title: "嘉義計程車服務",
+        slogan: "您的專屬嘉義計程車服務",
+        service1: "🚖 叫車服務", desc1: "市區接送，方便又快速。",
+        service2: "🕒 包車一日遊", desc2: "阿里山、梅山、嘉義周邊景點。",
+        service3: "✈️ 機場接送", desc3: "桃園 / 高雄機場，需提前預約。",
+        service4: "🌐 多語服務", desc4: "提供中文 / 英文 / 越南文。",
+        contact: "📱 聯絡我們"
+      },
+      en: {
+        title: "Chiayi Taxi Service",
+        slogan: "Your Reliable Taxi Service in Chiayi",
+        service1: "🚖 Taxi Ride", desc1: "City rides, fast and convenient.",
+        service2: "🕒 Daily Charter", desc2: "Alishan, Meishan, Chiayi attractions.",
+        service3: "✈️ Airport Transfer", desc3: "Taoyuan / Kaohsiung airport, booking required.",
+        service4: "🌐 Multi-language", desc4: "Available in Chinese / English / Vietnamese.",
+        contact: "📱 Contact Us"
+      },
+      vi: {
+        title: "Dịch vụ Taxi Gia Nghĩa",
+        slogan: "Dịch vụ taxi đáng tin cậy tại Gia Nghĩa",
+        service1: "🚖 Gọi xe", desc1: "Đưa đón trong thành phố, nhanh chóng và tiện lợi.",
+        service2: "🕒 Thuê xe theo ngày", desc2: "Alishan, Meishan, các điểm tham quan Gia Nghĩa.",
+        service3: "✈️ Đưa đón sân bay", desc3: "Sân bay Đào Viên / Cao Hùng, cần đặt trước.",
+        service4: "🌐 Hỗ trợ đa ngôn ngữ", desc4: "Có sẵn: Tiếng Trung / Tiếng Anh / Tiếng Việt.",
+        contact: "📱 Liên hệ"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById("title").innerText = langText[lang].title;
+      document.getElementById("slogan").innerText = langText[lang].slogan;
+      document.getElementById("service1").innerText = langText[lang].service1;
+      document.getElementById("desc1").innerText = langText[lang].desc1;
+      document.getElementById("service2").innerText = langText[lang].service2;
+      document.getElementById("desc2").innerText = langText[lang].desc2;
+      document.getElementById("service3").innerText = langText[lang].service3;
+      document.getElementById("desc3").innerText = langText[lang].desc3;
+      document.getElementById("service4").innerText = langText[lang].service4;
+      document.getElementById("desc4").innerText = langText[lang].desc4;
+      document.getElementById("contact").innerText = langText[lang].contact;
+    }
+  </script>
+</body>
+</html>
